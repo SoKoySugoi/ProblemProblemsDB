@@ -1,0 +1,12 @@
+C:\Users\user\OneDrive\Desktop\MyBuilds\ProblemProblemsDB-master\InventoryMaintenance\bin\Debug\LSSEastProblemsDB.exe.config
+C:\Users\user\OneDrive\Desktop\MyBuilds\ProblemProblemsDB-master\InventoryMaintenance\bin\Debug\LSSEastProblemsDB.exe
+C:\Users\user\OneDrive\Desktop\MyBuilds\ProblemProblemsDB-master\InventoryMaintenance\bin\Debug\LSSEastProblemsDB.pdb
+C:\Users\user\OneDrive\Desktop\MyBuilds\ProblemProblemsDB-master\InventoryMaintenance\obj\Debug\ProblemProblemsDB.csproj.AssemblyReference.cache
+C:\Users\user\OneDrive\Desktop\MyBuilds\ProblemProblemsDB-master\InventoryMaintenance\obj\Debug\LSSEastProblemsDB.frmNewQuestion.resources
+C:\Users\user\OneDrive\Desktop\MyBuilds\ProblemProblemsDB-master\InventoryMaintenance\obj\Debug\LSSEastProblemsDB.frmListQuestions.resources
+C:\Users\user\OneDrive\Desktop\MyBuilds\ProblemProblemsDB-master\InventoryMaintenance\obj\Debug\LSSEastProblemsDB.frmWelcome.resources
+C:\Users\user\OneDrive\Desktop\MyBuilds\ProblemProblemsDB-master\InventoryMaintenance\obj\Debug\LSSEastProblemsDB.Properties.Resources.resources
+C:\Users\user\OneDrive\Desktop\MyBuilds\ProblemProblemsDB-master\InventoryMaintenance\obj\Debug\ProblemProblemsDB.csproj.GenerateResource.cache
+C:\Users\user\OneDrive\Desktop\MyBuilds\ProblemProblemsDB-master\InventoryMaintenance\obj\Debug\ProblemProblemsDB.csproj.CoreCompileInputs.cache
+C:\Users\user\OneDrive\Desktop\MyBuilds\ProblemProblemsDB-master\InventoryMaintenance\obj\Debug\LSSEastProblemsDB.exe
+C:\Users\user\OneDrive\Desktop\MyBuilds\ProblemProblemsDB-master\InventoryMaintenance\obj\Debug\LSSEastProblemsDB.pdb

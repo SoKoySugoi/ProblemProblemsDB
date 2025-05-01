@@ -1,0 +1,58 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+
+namespace LSSEastProblemsDB
+{
+    public static class QuestionsDB
+    {
+        // This code is meant to populate and update a text file to store data from the list of questions.
+        private const string dir = @"..\..\Text_Files\";
+        private const string path = dir + "Problems.txt";
+
+        public static List<Question> GetItems()
+        {
+            // create the list
+            List<Question> questions = new List<Question>();
+
+            // Add code here to read the text file into the List object.
+            StreamReader txtFileReader = new StreamReader(new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read));
+
+            while (!txtFileReader.EndOfStream)
+            {
+                string line = txtFileReader.ReadLine();
+                string[] columns = line.Split('|');
+
+                Question question = new Question();
+                question.CourseCode = columns[0];
+                question.Topic = (columns[1]);
+                question.Prompt = columns[2];
+                question.Suggestions = columns[3];
+                question.Answer = columns[4];
+                question.Completed = Convert.ToBoolean(columns[5]);
+
+                questions.Add(question);
+            }                
+            txtFileReader.Close();
+            return questions;
+        }
+
+        public static void SaveItems(List<Question> questions)
+        {
+            // Add code here to write the List object to the text file
+
+            StreamWriter txtFileWriter = new StreamWriter(new FileStream(path, FileMode.Create, FileAccess.Write));
+
+            foreach (Question question in questions)
+            {
+                txtFileWriter.Write(question.CourseCode + "|");
+                txtFileWriter.Write(question.Topic + "|");
+                txtFileWriter.Write(question.Prompt + "|");
+                txtFileWriter.Write(question.Suggestions + "|");
+                txtFileWriter.Write(question.Answer + "|");
+                txtFileWriter.WriteLine(question.Completed);
+            }
+            txtFileWriter.Close();
+        }
+    }
+}
