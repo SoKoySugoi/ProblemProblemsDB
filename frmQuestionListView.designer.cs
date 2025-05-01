@@ -59,7 +59,7 @@ namespace LSSEastProblemsDB
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(1077, 517);
+            this.btnDelete.Location = new System.Drawing.Point(1077, 478);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(139, 31);
@@ -69,7 +69,7 @@ namespace LSSEastProblemsDB
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(1077, 478);
+            this.btnAdd.Location = new System.Drawing.Point(1077, 402);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(139, 31);

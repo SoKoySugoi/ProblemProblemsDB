@@ -20,7 +20,11 @@ namespace LSSEastProblemsDB
 		{
 			// Add a statement here that gets the list of items.
 			if (user != "Tutor")
-				btnUpdate.Visible = false;
+			{
+                btnUpdate.Visible = false;
+				btnDelete.Visible = false;	
+            }
+
             questions = QuestionsDB.GetItems();
 			FillItemListBox();			
 		}
@@ -77,7 +81,6 @@ namespace LSSEastProblemsDB
 				}
 			}
 		}
-
 
         private void lstItems_DoubleClick(object sender, EventArgs e)
         {
