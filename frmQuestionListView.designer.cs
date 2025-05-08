@@ -33,6 +33,7 @@ namespace LSSEastProblemsDB
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.llLogout = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // lstQuestions
@@ -49,7 +50,7 @@ namespace LSSEastProblemsDB
             // btnExit
             // 
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.Location = new System.Drawing.Point(1077, 556);
+            this.btnExit.Location = new System.Drawing.Point(1077, 533);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(139, 31);
@@ -87,12 +88,24 @@ namespace LSSEastProblemsDB
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
+            // llLogout
+            // 
+            this.llLogout.AutoSize = true;
+            this.llLogout.Location = new System.Drawing.Point(13, 574);
+            this.llLogout.Name = "llLogout";
+            this.llLogout.Size = new System.Drawing.Size(56, 17);
+            this.llLogout.TabIndex = 12;
+            this.llLogout.TabStop = true;
+            this.llLogout.Text = "Logout";
+            this.llLogout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llLogout_LinkClicked);
+            // 
             // frmListQuestions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(1229, 600);
+            this.Controls.Add(this.llLogout);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.lstQuestions);
             this.Controls.Add(this.btnExit);
@@ -104,8 +117,9 @@ namespace LSSEastProblemsDB
             this.Name = "frmListQuestions";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Questions List View";
-            this.Load += new System.EventHandler(this.frmInvMaint_Load);
+            this.Load += new System.EventHandler(this.frmListQuestions_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -116,6 +130,7 @@ namespace LSSEastProblemsDB
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.LinkLabel llLogout;
     }
 }
 

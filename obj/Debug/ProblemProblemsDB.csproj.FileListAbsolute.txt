@@ -10,3 +10,4 @@ C:\Users\user\OneDrive\Desktop\MyBuilds\ProblemProblemsDB-master\InventoryMainte
 C:\Users\user\OneDrive\Desktop\MyBuilds\ProblemProblemsDB-master\InventoryMaintenance\obj\Debug\ProblemProblemsDB.csproj.CoreCompileInputs.cache
 C:\Users\user\OneDrive\Desktop\MyBuilds\ProblemProblemsDB-master\InventoryMaintenance\obj\Debug\LSSEastProblemsDB.exe
 C:\Users\user\OneDrive\Desktop\MyBuilds\ProblemProblemsDB-master\InventoryMaintenance\obj\Debug\LSSEastProblemsDB.pdb
+C:\Users\user\OneDrive\Desktop\MyBuilds\ProblemProblemsDB-master\InventoryMaintenance\obj\Debug\LSSEastProblemsDB.frmFilterTopics.resources
