@@ -81,11 +81,11 @@
             // 
             this.lblTopic.AutoSize = true;
             this.lblTopic.Font = new System.Drawing.Font("Cascadia Code", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTopic.Location = new System.Drawing.Point(351, 9);
+            this.lblTopic.Location = new System.Drawing.Point(259, 9);
             this.lblTopic.Name = "lblTopic";
-            this.lblTopic.Size = new System.Drawing.Size(166, 25);
+            this.lblTopic.Size = new System.Drawing.Size(309, 25);
             this.lblTopic.TabIndex = 4;
-            this.lblTopic.Text = "Select a Topic";
+            this.lblTopic.Text = "Select a course or view all";
             // 
             // btnNext
             // 

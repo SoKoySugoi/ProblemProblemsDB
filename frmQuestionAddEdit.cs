@@ -16,23 +16,32 @@ namespace LSSEastProblemsDB
 
         private void loadSettings(string user, string courseCode)
         {
+            // loads the course number text box
             txtCourseCode.Text = courseCode;
-            if (courseCode == "")
-            {
+
+            // alters the form title if a topic exists
+            if (txtTopic.Text == "") {
                 this.Text = "Add New Question";
             }
-            else
-            {
+            else {
                 this.Text = "Update Question";
             }
+
             if (user == "Student")
             {
+                // in student mode completed is assumed false and the suggestions label is changed to comments
                 chkCompleted.Visible = false;
                 chkCompleted.Checked = false;
+                lblSuggestions.Text = "Comments:";
+
+                // shifts the suggestions label in line  
+                var location = lblSuggestions.Location;
+                location.X = 45;
+                lblSuggestions.Location = location;
             }
         }
 
-        // Add a method here that gets and returns a new item.
+        // Returns a new question object to the previous form
         public Question GetNewItem()
         {
             this.ShowDialog();
@@ -41,9 +50,12 @@ namespace LSSEastProblemsDB
 
         private void saveQuestion()
         {
-            question = new Question(txtCourseCode.Text, txtTopic.Text, rtxPrompt.Text, rtxSuggetions.Text, rtxAnswer.Text, chkCompleted.Checked);
+            // On save click, assigns the question property of the form the input data
+            question = new Question(txtCourseCode.Text, txtTopic.Text, 
+                rtxPrompt.Text, rtxSuggetions.Text, rtxAnswer.Text, chkCompleted.Checked);
         }
 
+        // returns the question object passed from the previous form with updated data
         public Question UpdateNewItem(Question question)
         {
             setData(question);
@@ -62,6 +74,7 @@ namespace LSSEastProblemsDB
                 this.Close();
             }
         }
+
         private void setData(Question question)
         {
             txtCourseCode.Text = question.CourseCode;

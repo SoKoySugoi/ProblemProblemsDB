@@ -1,2 +1,1 @@
-1049915619|This|Is|All|Updated|Data|True
-2014294145|This|Is|Another|Dummy|Entry|True
+842223630|MATH 92|Algebra(PEMDAS)|3(x-2)+5=14|To solve for x, begin by distributing the 3. Then, combine like terms and isolate x to one side of the expression. 3x-6+5=14 -> 3x-1=14 -> 3x=15|x=5|True

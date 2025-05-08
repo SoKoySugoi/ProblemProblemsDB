@@ -34,23 +34,24 @@ namespace LSSEastProblemsDB
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.llLogout = new System.Windows.Forms.LinkLabel();
+            this.lblTopic = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lstQuestions
             // 
             this.lstQuestions.FormattingEnabled = true;
             this.lstQuestions.ItemHeight = 17;
-            this.lstQuestions.Location = new System.Drawing.Point(16, 16);
+            this.lstQuestions.Location = new System.Drawing.Point(13, 47);
             this.lstQuestions.Margin = new System.Windows.Forms.Padding(4);
             this.lstQuestions.Name = "lstQuestions";
-            this.lstQuestions.Size = new System.Drawing.Size(1037, 548);
+            this.lstQuestions.Size = new System.Drawing.Size(657, 497);
             this.lstQuestions.TabIndex = 10;
             this.lstQuestions.DoubleClick += new System.EventHandler(this.lstItems_DoubleClick);
             // 
             // btnExit
             // 
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.Location = new System.Drawing.Point(1077, 533);
+            this.btnExit.Location = new System.Drawing.Point(678, 462);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(139, 31);
@@ -60,7 +61,7 @@ namespace LSSEastProblemsDB
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(1077, 478);
+            this.btnDelete.Location = new System.Drawing.Point(678, 407);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(139, 31);
@@ -70,7 +71,7 @@ namespace LSSEastProblemsDB
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(1077, 402);
+            this.btnAdd.Location = new System.Drawing.Point(678, 331);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(139, 31);
@@ -80,7 +81,7 @@ namespace LSSEastProblemsDB
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(1077, 440);
+            this.btnUpdate.Location = new System.Drawing.Point(678, 369);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(139, 31);
             this.btnUpdate.TabIndex = 11;
@@ -91,7 +92,7 @@ namespace LSSEastProblemsDB
             // llLogout
             // 
             this.llLogout.AutoSize = true;
-            this.llLogout.Location = new System.Drawing.Point(13, 574);
+            this.llLogout.Location = new System.Drawing.Point(10, 549);
             this.llLogout.Name = "llLogout";
             this.llLogout.Size = new System.Drawing.Size(56, 17);
             this.llLogout.TabIndex = 12;
@@ -99,12 +100,22 @@ namespace LSSEastProblemsDB
             this.llLogout.Text = "Logout";
             this.llLogout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llLogout_LinkClicked);
             // 
+            // lblTopic
+            // 
+            this.lblTopic.AutoSize = true;
+            this.lblTopic.Location = new System.Drawing.Point(10, 26);
+            this.lblTopic.Name = "lblTopic";
+            this.lblTopic.Size = new System.Drawing.Size(464, 17);
+            this.lblTopic.TabIndex = 13;
+            this.lblTopic.Text = "Double-Click a topic to view a related question or prompt";
+            // 
             // frmListQuestions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(1229, 600);
+            this.ClientSize = new System.Drawing.Size(828, 575);
+            this.Controls.Add(this.lblTopic);
             this.Controls.Add(this.llLogout);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.lstQuestions);
@@ -131,6 +142,7 @@ namespace LSSEastProblemsDB
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.LinkLabel llLogout;
+        private System.Windows.Forms.Label lblTopic;
     }
 }
 
