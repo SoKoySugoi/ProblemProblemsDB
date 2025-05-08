@@ -52,7 +52,7 @@ namespace LSSEastProblemsDB
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
             // Add code here that creates an instance of the New Item form
-			frmNewQuestion NewItemForm = new frmNewQuestion();
+			frmNewQuestion NewItemForm = new frmNewQuestion(user, courseCode);
 			this.Hide();
 			Question question = NewItemForm.GetNewItem();
 			this.Show();
@@ -104,13 +104,17 @@ namespace LSSEastProblemsDB
 			if (selected != -1)
 			{
                 Question selectedQuestion = questions[selected];
-                frmNewQuestion updateForm = new frmNewQuestion();
+                frmNewQuestion updateForm = new frmNewQuestion(user, selectedQuestion.CourseCode);
                 this.Hide();
                 selectedQuestion = updateForm.UpdateNewItem(selectedQuestion);
                 questions[selected] = selectedQuestion;
                 QuestionsDB.SaveItems(questions);
                 FillItemListBox();
                 this.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please select a question.");
             }
         }
 

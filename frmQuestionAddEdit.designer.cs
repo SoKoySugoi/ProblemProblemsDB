@@ -58,6 +58,7 @@
             this.txtCourseCode.Location = new System.Drawing.Point(139, 17);
             this.txtCourseCode.Margin = new System.Windows.Forms.Padding(4);
             this.txtCourseCode.Name = "txtCourseCode";
+            this.txtCourseCode.ReadOnly = true;
             this.txtCourseCode.Size = new System.Drawing.Size(149, 23);
             this.txtCourseCode.TabIndex = 0;
             this.txtCourseCode.Tag = "Item no";

@@ -5,13 +5,32 @@ namespace LSSEastProblemsDB
 {
     public partial class frmNewQuestion : Form
     {
-        public frmNewQuestion()
+        public frmNewQuestion(string user, string courseCode = "")
         {
             InitializeComponent();
+            loadSettings(user, courseCode);
         }
 
         // Add a statement here that declares the inventory item.
         private Question question = null;
+
+        private void loadSettings(string user, string courseCode)
+        {
+            txtCourseCode.Text = courseCode;
+            if (courseCode == "")
+            {
+                this.Text = "Add New Question";
+            }
+            else
+            {
+                this.Text = "Update Question";
+            }
+            if (user == "Student")
+            {
+                chkCompleted.Visible = false;
+                chkCompleted.Checked = false;
+            }
+        }
 
         // Add a method here that gets and returns a new item.
         public Question GetNewItem()
