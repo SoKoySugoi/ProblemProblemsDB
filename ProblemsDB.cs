@@ -25,12 +25,13 @@ namespace LSSEastProblemsDB
 
                 Problem question = new Problem();
                 question.ID = Convert.ToInt32(columns[0]);
-                question.CourseCode = columns[1];
-                question.Topic = (columns[2]);
-                question.Prompt = columns[3];
-                question.Suggestions = columns[4];
-                question.Answer = columns[5];
-                question.Completed = Convert.ToBoolean(columns[6]);
+                question.Subject = columns[1];
+                question.CourseCode = columns[2];
+                question.Topic = (columns[3]);
+                question.Prompt = columns[4];
+                question.Suggestions = columns[5];
+                question.Answer = columns[6];
+                question.Completed = Convert.ToBoolean(columns[7]);
 
                 questions.Add(question);
             }
@@ -47,6 +48,7 @@ namespace LSSEastProblemsDB
             foreach (Problem question in questions)
             {
                 txtFileWriter.Write(question.ID + "|");
+                txtFileWriter.Write(question.Subject + "|");
                 txtFileWriter.Write(question.CourseCode + "|");
                 txtFileWriter.Write(question.Topic + "|");
                 txtFileWriter.Write(question.Prompt + "|");

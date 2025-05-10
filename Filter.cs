@@ -100,9 +100,6 @@
                 case "Business Math/Accounting":
                     courses = new Filter().BusAccCourseCodes;
                     break;
-                default:
-                    // set courses to all
-                    break;
             }
             return courses;
         }

@@ -7,6 +7,7 @@ namespace LSSEastProblemsDB
     {
         // This code is designed to contain data related to a prompt or question
         private int id;
+        private string subject;
         private string courseCode;
         private string topic;
         private string prompt;
@@ -17,10 +18,11 @@ namespace LSSEastProblemsDB
         public Problem() {}
 
         public Problem(
-            string courseCode, string topic, string prompt, 
+            string subject, string courseCode, string topic, string prompt, 
             string suggestions, string answer, bool completed) {
                 // "G"enerate a "u"nique "ID" for the question
                 id = Guid.NewGuid().GetHashCode();
+                Subject = subject;
                 Topic = topic;
                 Prompt = prompt;
                 Suggestions = suggestions;
@@ -31,6 +33,9 @@ namespace LSSEastProblemsDB
 
         public int ID { 
             get { return id; } set { id = value; }
+        }
+        public string Subject {
+            get { return subject; } set { subject = value; }
         }
         public string CourseCode {
             get { return courseCode; } set { courseCode = value; }

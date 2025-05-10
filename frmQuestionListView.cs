@@ -8,10 +8,12 @@ namespace LSSEastProblemsDB
 	{
 		private string user = "";
         private string courseCode = "";
-        public frmListQuestions(string user, string courseCode) {
+        private string subject = "";
+        public frmListQuestions(string user, string courseCode, string subject) {
 			InitializeComponent();
 			this.user = user;
             this.courseCode = courseCode;
+            this.subject = subject;
         }
 
 		// Add a statement here that declares the list of items.
@@ -27,13 +29,20 @@ namespace LSSEastProblemsDB
             }
             lvProblems.Items.Clear();
 
-            masterList = ProblemsDB.GetItems();            
+            masterList = ProblemsDB.GetItems(); 
+
             FillListView();
-		}
+            if (lvProblems.Items.Count == 0)
+            {
+                MessageBox.Show(
+                    "Submit any question and we'll happily answer\n" +
+                    "as soon as possible.", "No Questions Found");
+            }
+        }
 
 		private void FillListView()
 		{
-            List<Problem> filteredList = (List<Problem>)FilterList(courseCode);
+            List<Problem> filteredList = (List<Problem>)FilterList();
             lvProblems.Items.Clear();
 			// Add code here that loads the list box with the items in the list.
             int index = 0;
@@ -45,14 +54,14 @@ namespace LSSEastProblemsDB
             }
         }
 
-        private IEnumerable<Problem> FilterList(string filter)
+        private IEnumerable<Problem> FilterList()
         {
             IEnumerable<Problem> list = null;
-            if (filter != "All"){
+            if (courseCode != "All"){
                 list = masterList.FindAll(q => q.CourseCode == courseCode);
             }
             else{
-                list = masterList;
+                list = masterList.FindAll(q => q.Subject == subject);
             }
             return list;
         }
@@ -60,7 +69,7 @@ namespace LSSEastProblemsDB
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
             // Add code here that creates an instance of the New Item form
-			frmNewQuestion NewItemForm = new frmNewQuestion(user, courseCode);
+			frmNewQuestion NewItemForm = new frmNewQuestion(user, courseCode, subject);
 			this.Hide();
 			Problem question = NewItemForm.GetNewItem();
 			this.Show();
@@ -114,7 +123,7 @@ namespace LSSEastProblemsDB
             if (selected != -1)
             {
                 Problem selectedQuestion = (Problem)lvProblems.FocusedItem.Tag;
-                frmNewQuestion updateForm = new frmNewQuestion(user, selectedQuestion.CourseCode);
+                frmNewQuestion updateForm = new frmNewQuestion(user, selectedQuestion.CourseCode, selectedQuestion.Subject);
                 this.Hide();
                 selectedQuestion = updateForm.UpdateNewItem(selectedQuestion);
                 UpdateQuestion(selectedQuestion);

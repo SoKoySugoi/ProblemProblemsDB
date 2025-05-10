@@ -91,7 +91,7 @@ namespace LSSEastProblemsDB
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            frmListQuestions listView = new frmListQuestions(user, cboCourseNo.Text);
+            frmListQuestions listView = new frmListQuestions(user, cboCourseNo.Text, cboSubject.Text);
             listView.Owner = this;
             this.Hide();
             listView.ShowDialog();

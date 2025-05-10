@@ -6,19 +6,21 @@ namespace LSSEastProblemsDB
 {
     public partial class frmNewQuestion : Form
     {
-        public frmNewQuestion(string user, string courseCode = "")
+        public frmNewQuestion(string user, string courseCode = "", string subject = "")
         {
             InitializeComponent();
-            loadSettings(user, courseCode);
+            loadSettings(user, courseCode, subject);
         }
 
         // Add a statement here that declares the inventory item.
+        private string subject = "";
         private Problem question = null;
 
-        private void loadSettings(string user, string courseCode)
+        private void loadSettings(string user, string courseCode, string subject)
         {
             // loads the course number text box
             txtCourseCode.Text = courseCode;
+            this.subject = subject;
 
             if (user == "Student")
             {
@@ -44,7 +46,7 @@ namespace LSSEastProblemsDB
         private void saveQuestion()
         {
             // On save click, assigns the question property of the form the input data
-            question = new Problem(txtCourseCode.Text, txtTopic.Text, 
+            question = new Problem(this.subject, txtCourseCode.Text, txtTopic.Text, 
                 txtPrompt.Text, txtSuggestions.Text, txtAnswer.Text, chkCompleted.Checked);
         }
         private void saveQuestion(Problem question)
@@ -52,6 +54,7 @@ namespace LSSEastProblemsDB
             // On save click, assigns the question property of the form the input data
             this.question = new Problem{
                 ID = question.ID,
+                Subject = question.Subject,
                 CourseCode = txtCourseCode.Text, 
                 Topic = txtTopic.Text,
                 Prompt = txtPrompt.Text, 
