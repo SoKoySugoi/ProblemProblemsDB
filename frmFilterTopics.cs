@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LSSEastProblemsDB
@@ -22,8 +15,7 @@ namespace LSSEastProblemsDB
         private void frmFilterTopics_Load(object sender, EventArgs e)
         {
             string[]subjects = new Filter().Subjects;
-            foreach (string subject in subjects)
-            {
+            foreach (string subject in subjects) {
                 cboSubject.Items.Add(subject);
             }
             cboSubject.SelectedIndex = 0;
@@ -36,8 +28,7 @@ namespace LSSEastProblemsDB
         {
             cboCourseNo.Enabled = true;
             getCourseNumbers(cboSubject.Text);
-            if(cboCourseNo.Items.Count != 0)
-            {
+            if(cboCourseNo.Items.Count != 0) {
                 cboCourseNo.SelectedIndex = 0;
             }
         }
@@ -49,40 +40,35 @@ namespace LSSEastProblemsDB
                 case "Math":
                     cboCourseNo.Items.Clear();
                     string[] mathCourseCodes = new Filter().MathCourseCodes;
-                    foreach (string course in mathCourseCodes)
-                    {
+                    foreach (string course in mathCourseCodes) {
                         cboCourseNo.Items.Add(course);
                     }
                     break;
                 case "Biology":
                     cboCourseNo.Items.Clear();
                     string[] bioCourseCodes = new Filter().BioCourseCodes;
-                    foreach (string course in bioCourseCodes)
-                    {
+                    foreach (string course in bioCourseCodes) {
                         cboCourseNo.Items.Add(course);
                     }
                     break;
                 case "Chemistry":
                     cboCourseNo.Items.Clear();
                     string[] chemCourseCodes = new Filter().ChemCourseCodes;
-                    foreach (string course in chemCourseCodes)
-                    {
+                    foreach (string course in chemCourseCodes) {
                         cboCourseNo.Items.Add(course);
                     }
                     break;
                 case "Physics":
                     cboCourseNo.Items.Clear();
                     string[] physicsCourseCodes = new Filter().PhysicsCourseCodes;
-                    foreach (string course in physicsCourseCodes)
-                    {
+                    foreach (string course in physicsCourseCodes) {
                         cboCourseNo.Items.Add(course);
                     }
                     break;
                 case "Computer Science":
                     cboCourseNo.Items.Clear();
                     string[] compSciCourseCodes = new Filter().CompSciCourseCodes;
-                    foreach (string course in compSciCourseCodes)
-                    {
+                    foreach (string course in compSciCourseCodes) {
                         cboCourseNo.Items.Add(course);
                     }
                     break;

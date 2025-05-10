@@ -2,6 +2,7 @@ using System.Windows.Forms;
 
 namespace LSSEastProblemsDB
 {
+    // this static class contains generic validation methods for the form
     public static class Validator
 	{
 		private static string title = "Entry Error";
