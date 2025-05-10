@@ -35,9 +35,9 @@
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.lblPrompt = new System.Windows.Forms.Label();
-            this.rtxSuggetions = new System.Windows.Forms.RichTextBox();
-            this.rtxPrompt = new System.Windows.Forms.RichTextBox();
-            this.rtxAnswer = new System.Windows.Forms.RichTextBox();
+            this.txtSuggestions = new System.Windows.Forms.RichTextBox();
+            this.txtPrompt = new System.Windows.Forms.RichTextBox();
+            this.txtAnswer = new System.Windows.Forms.RichTextBox();
             this.lblAnswer = new System.Windows.Forms.Label();
             this.lblSuggestions = new System.Windows.Forms.Label();
             this.chkCompleted = new System.Windows.Forms.CheckBox();
@@ -61,7 +61,7 @@
             this.txtCourseCode.ReadOnly = true;
             this.txtCourseCode.Size = new System.Drawing.Size(149, 23);
             this.txtCourseCode.TabIndex = 12;
-            this.txtCourseCode.Tag = "Item no";
+            this.txtCourseCode.Tag = "Course Number";
             // 
             // lblTopic
             // 
@@ -80,7 +80,7 @@
             this.txtTopic.Name = "txtTopic";
             this.txtTopic.Size = new System.Drawing.Size(284, 23);
             this.txtTopic.TabIndex = 0;
-            this.txtTopic.Tag = "Description";
+            this.txtTopic.Tag = "Topic";
             // 
             // btnSave
             // 
@@ -115,29 +115,32 @@
             this.lblPrompt.TabIndex = 9;
             this.lblPrompt.Text = "Prompt:";
             // 
-            // rtxSuggetions
+            // txtSuggestions
             // 
-            this.rtxSuggetions.Location = new System.Drawing.Point(139, 211);
-            this.rtxSuggetions.Name = "rtxSuggetions";
-            this.rtxSuggetions.Size = new System.Drawing.Size(443, 96);
-            this.rtxSuggetions.TabIndex = 2;
-            this.rtxSuggetions.Text = "";
+            this.txtSuggestions.Location = new System.Drawing.Point(139, 211);
+            this.txtSuggestions.Name = "txtSuggestions";
+            this.txtSuggestions.Size = new System.Drawing.Size(443, 96);
+            this.txtSuggestions.TabIndex = 2;
+            this.txtSuggestions.Tag = "Comments";
+            this.txtSuggestions.Text = "";
             // 
-            // rtxPrompt
+            // txtPrompt
             // 
-            this.rtxPrompt.Location = new System.Drawing.Point(139, 109);
-            this.rtxPrompt.Name = "rtxPrompt";
-            this.rtxPrompt.Size = new System.Drawing.Size(443, 96);
-            this.rtxPrompt.TabIndex = 1;
-            this.rtxPrompt.Text = "";
+            this.txtPrompt.Location = new System.Drawing.Point(139, 109);
+            this.txtPrompt.Name = "txtPrompt";
+            this.txtPrompt.Size = new System.Drawing.Size(443, 96);
+            this.txtPrompt.TabIndex = 1;
+            this.txtPrompt.Tag = "Prompt";
+            this.txtPrompt.Text = "";
             // 
-            // rtxAnswer
+            // txtAnswer
             // 
-            this.rtxAnswer.Location = new System.Drawing.Point(139, 313);
-            this.rtxAnswer.Name = "rtxAnswer";
-            this.rtxAnswer.Size = new System.Drawing.Size(443, 60);
-            this.rtxAnswer.TabIndex = 3;
-            this.rtxAnswer.Text = "";
+            this.txtAnswer.Location = new System.Drawing.Point(139, 313);
+            this.txtAnswer.Name = "txtAnswer";
+            this.txtAnswer.Size = new System.Drawing.Size(443, 60);
+            this.txtAnswer.TabIndex = 3;
+            this.txtAnswer.Tag = "Answer";
+            this.txtAnswer.Text = "";
             // 
             // lblAnswer
             // 
@@ -178,9 +181,9 @@
             this.Controls.Add(this.chkCompleted);
             this.Controls.Add(this.lblSuggestions);
             this.Controls.Add(this.lblAnswer);
-            this.Controls.Add(this.rtxAnswer);
-            this.Controls.Add(this.rtxPrompt);
-            this.Controls.Add(this.rtxSuggetions);
+            this.Controls.Add(this.txtAnswer);
+            this.Controls.Add(this.txtPrompt);
+            this.Controls.Add(this.txtSuggestions);
             this.Controls.Add(this.lblPrompt);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
@@ -210,9 +213,9 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label lblPrompt;
-        private System.Windows.Forms.RichTextBox rtxSuggetions;
-        private System.Windows.Forms.RichTextBox rtxPrompt;
-        private System.Windows.Forms.RichTextBox rtxAnswer;
+        private System.Windows.Forms.RichTextBox txtSuggestions;
+        private System.Windows.Forms.RichTextBox txtPrompt;
+        private System.Windows.Forms.RichTextBox txtAnswer;
         private System.Windows.Forms.Label lblAnswer;
         private System.Windows.Forms.Label lblSuggestions;
         private System.Windows.Forms.CheckBox chkCompleted;

@@ -28,7 +28,7 @@
         public string[] BioCourseCodes = 
         { 
             "All",
-            "BIOL 180","BIO L185",
+            "BIOL 180","BIO 185",
             "BIOL 214","BIOL 215","BIOL 216",
 
             "BIOL& 160","BIOL& 175",

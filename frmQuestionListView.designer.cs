@@ -28,30 +28,21 @@ namespace LSSEastProblemsDB
         /// </summary>
         private void InitializeComponent()
         {
-            this.lstQuestions = new System.Windows.Forms.ListBox();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.llLogout = new System.Windows.Forms.LinkLabel();
             this.lblTopic = new System.Windows.Forms.Label();
+            this.lvProblems = new System.Windows.Forms.ListView();
+            this.Topic = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Answer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
-            // 
-            // lstQuestions
-            // 
-            this.lstQuestions.FormattingEnabled = true;
-            this.lstQuestions.ItemHeight = 17;
-            this.lstQuestions.Location = new System.Drawing.Point(13, 47);
-            this.lstQuestions.Margin = new System.Windows.Forms.Padding(4);
-            this.lstQuestions.Name = "lstQuestions";
-            this.lstQuestions.Size = new System.Drawing.Size(657, 497);
-            this.lstQuestions.TabIndex = 10;
-            this.lstQuestions.DoubleClick += new System.EventHandler(this.lstItems_DoubleClick);
             // 
             // btnExit
             // 
             this.btnExit.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnExit.Location = new System.Drawing.Point(678, 462);
+            this.btnExit.Location = new System.Drawing.Point(358, 486);
             this.btnExit.Margin = new System.Windows.Forms.Padding(4);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(139, 31);
@@ -61,7 +52,7 @@ namespace LSSEastProblemsDB
             // 
             // btnDelete
             // 
-            this.btnDelete.Location = new System.Drawing.Point(678, 407);
+            this.btnDelete.Location = new System.Drawing.Point(358, 431);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(139, 31);
@@ -71,7 +62,7 @@ namespace LSSEastProblemsDB
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(678, 331);
+            this.btnAdd.Location = new System.Drawing.Point(358, 355);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(139, 31);
@@ -81,7 +72,7 @@ namespace LSSEastProblemsDB
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(678, 369);
+            this.btnUpdate.Location = new System.Drawing.Point(358, 393);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(139, 31);
             this.btnUpdate.TabIndex = 11;
@@ -109,16 +100,44 @@ namespace LSSEastProblemsDB
             this.lblTopic.TabIndex = 13;
             this.lblTopic.Text = "Double-Click a topic to view a related question or prompt";
             // 
+            // lvProblems
+            // 
+            this.lvProblems.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Topic,
+            this.Answer});
+            this.lvProblems.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lvProblems.FullRowSelect = true;
+            this.lvProblems.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lvProblems.HideSelection = false;
+            this.lvProblems.Location = new System.Drawing.Point(13, 46);
+            this.lvProblems.MultiSelect = false;
+            this.lvProblems.Name = "lvProblems";
+            this.lvProblems.Size = new System.Drawing.Size(338, 500);
+            this.lvProblems.TabIndex = 14;
+            this.lvProblems.UseCompatibleStateImageBehavior = false;
+            this.lvProblems.View = System.Windows.Forms.View.Details;
+            this.lvProblems.DoubleClick += new System.EventHandler(this.lvProblems_DoubleClick);
+            // 
+            // Topic
+            // 
+            this.Topic.Text = "Topic";
+            this.Topic.Width = 150;
+            // 
+            // Answer
+            // 
+            this.Answer.Text = "Answer";
+            this.Answer.Width = 150;
+            // 
             // frmListQuestions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
-            this.ClientSize = new System.Drawing.Size(828, 575);
+            this.ClientSize = new System.Drawing.Size(510, 575);
+            this.Controls.Add(this.lvProblems);
             this.Controls.Add(this.lblTopic);
             this.Controls.Add(this.llLogout);
             this.Controls.Add(this.btnUpdate);
-            this.Controls.Add(this.lstQuestions);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
@@ -135,14 +154,15 @@ namespace LSSEastProblemsDB
         }
 
         #endregion
-
-        private System.Windows.Forms.ListBox lstQuestions;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.LinkLabel llLogout;
         private System.Windows.Forms.Label lblTopic;
+        private System.Windows.Forms.ListView lvProblems;
+        private System.Windows.Forms.ColumnHeader Topic;
+        private System.Windows.Forms.ColumnHeader Answer;
     }
 }
 

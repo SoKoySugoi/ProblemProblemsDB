@@ -15,38 +15,46 @@ namespace LSSEastProblemsDB
         }
 
 		// Add a statement here that declares the list of items.
-		private List <Problem> questions = null;
+		private List<Problem> masterList = null;
 
         private void frmListQuestions_Load(object sender, EventArgs e)
 		{
+
 			// Add a statement here that gets the list of items.
 			if (user != "Tutor") {
                 btnUpdate.Visible = false;
 				btnDelete.Visible = false;	
             }
-            questions = ProblemsDB.GetItems();
-			FillItemListBox();			
+            lvProblems.Items.Clear();
+
+            masterList = ProblemsDB.GetItems();            
+            FillListView();
 		}
 
-		private void FillItemListBox()
+		private void FillListView()
 		{
-			lstQuestions.Items.Clear();
+            List<Problem> filteredList = (List<Problem>)FilterList(courseCode);
+            lvProblems.Items.Clear();
 			// Add code here that loads the list box with the items in the list.
-			foreach (Problem question in questions) {
-				lstQuestions.Items.Add(question.GetDisplayText());
-			}
+            int index = 0;
+            foreach (Problem question in filteredList) {
+				lvProblems.Items.Add(question.Topic);
+                lvProblems.Items[index].SubItems.Add(question.Answer);
+                lvProblems.Items[index].Tag = question;
+                index++;
+            }
         }
 
-		private Problem getSelectedQuestion()
-		{
-            int selected = lstQuestions.SelectedIndex;
-            if (selected != -1) {
-                return questions[selected];
+        private IEnumerable<Problem> FilterList(string filter)
+        {
+            IEnumerable<Problem> list = null;
+            if (filter != "All"){
+                list = masterList.FindAll(q => q.CourseCode == courseCode);
             }
-			else {
-                MessageBox.Show("Please select a question.");
-                return null;
+            else{
+                list = masterList;
             }
+            return list;
         }
 
 		private void btnAdd_Click(object sender, EventArgs e)
@@ -60,62 +68,72 @@ namespace LSSEastProblemsDB
             // and then gets a new item from that form.
 			if (question != null)
 			{
-                questions.Add(question);
-				ProblemsDB.SaveItems(questions);
-				FillItemListBox();
-			}
+                masterList.Add(question);
+				ProblemsDB.SaveProblems(masterList);
+                FillListView();
+            }
         }
 
-		private void btnDelete_Click(object sender, EventArgs e)
-		{
-			// Add code here that displays a dialog box to confirm
-			// the deletion and then removes the item from the list,
-			// saves the list of products, and refreshes the list box
-			// if the deletion is confirmed.
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            // Add code here that displays a dialog box to confirm
+            // the deletion and then removes the item from the list,
+            // saves the list of products, and refreshes the list box
+            // if the deletion is confirmed.
 
-			Problem item = getSelectedQuestion();
+            Problem question = (Problem)lvProblems.FocusedItem.Tag;
             string message = "Are you sure you want to delete this question?";
-			if (item != null)
-			{
+            if (question != null)
+            {
                 DialogResult button =
                     MessageBox.Show(message, "Confirm Delete",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                 if (button == DialogResult.Yes)
                 {
-                    questions.Remove(item);
-                    ProblemsDB.SaveItems(questions);
-                    FillItemListBox();
+                    masterList.Remove(question);
+                    ProblemsDB.SaveProblems(masterList);
+                    FillListView();
                 }
             }
-		}
-		
-        private void lstItems_DoubleClick(object sender, EventArgs e)
+        }
+
+        private int GetSelectedIndex()
         {
-			Problem selectedQuestion = getSelectedQuestion();
-            MessageBox.Show($"Prompt: {selectedQuestion.Prompt}\n\n" +
-				$"Suggestions: {selectedQuestion.Suggestions}\n\n" +
-				$"Answer: {selectedQuestion.Answer}", "Details");
+            int selected = -1;
+            if (lvProblems.SelectedItems.Count > 0)
+            {
+                selected = lvProblems.SelectedIndices[0];
+            }
+            return selected;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            int selected = lstQuestions.SelectedIndex;
-			if (selected != -1)
-			{
-                Problem selectedQuestion = questions[selected];
+            int selected = GetSelectedIndex();
+            if (selected != -1)
+            {
+                Problem selectedQuestion = (Problem)lvProblems.FocusedItem.Tag;
                 frmNewQuestion updateForm = new frmNewQuestion(user, selectedQuestion.CourseCode);
                 this.Hide();
                 selectedQuestion = updateForm.UpdateNewItem(selectedQuestion);
-                questions[selected] = selectedQuestion;
-                ProblemsDB.SaveItems(questions);
-                FillItemListBox();
+                UpdateQuestion(selectedQuestion);
+                ProblemsDB.SaveProblems(masterList);
+                FillListView();
                 this.Show();
             }
             else
             {
                 MessageBox.Show("Please select a question.");
             }
+        }
+
+        private void UpdateQuestion(Problem selectedQuestion)
+        {
+            int selectedId = selectedQuestion.ID;
+            Problem question = masterList.Find(q => q.ID == selectedId);
+            masterList.Remove(question);
+            masterList.Add(selectedQuestion);
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -129,6 +147,14 @@ namespace LSSEastProblemsDB
             frmWelcome welcome = new frmWelcome();
             this.Hide();
             welcome.ShowDialog();
+        }
+
+        private void lvProblems_DoubleClick(object sender, EventArgs e)
+        {
+            Problem selectedQuestion = lvProblems.FocusedItem.Tag as Problem;
+            MessageBox.Show($"Prompt: {selectedQuestion.Prompt}\n\n" +
+                $"Suggestions: {selectedQuestion.Suggestions}\n\n" +
+                $"Answer: {selectedQuestion.Answer}", "Details");
         }
     }
 }

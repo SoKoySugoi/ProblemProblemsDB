@@ -1,4 +1,5 @@
 ﻿using System;
+using static LSSEastProblemsDB.Validator;
 using System.Windows.Forms;
 
 namespace LSSEastProblemsDB
@@ -18,14 +19,6 @@ namespace LSSEastProblemsDB
         {
             // loads the course number text box
             txtCourseCode.Text = courseCode;
-
-            // alters the form title if a topic exists
-            if (txtTopic.Text == "") {
-                this.Text = "Add New Question";
-            }
-            else {
-                this.Text = "Update Question";
-            }
 
             if (user == "Student")
             {
@@ -52,47 +45,74 @@ namespace LSSEastProblemsDB
         {
             // On save click, assigns the question property of the form the input data
             question = new Problem(txtCourseCode.Text, txtTopic.Text, 
-                rtxPrompt.Text, rtxSuggetions.Text, rtxAnswer.Text, chkCompleted.Checked);
+                txtPrompt.Text, txtSuggestions.Text, txtAnswer.Text, chkCompleted.Checked);
+        }
+        private void saveQuestion(Problem question)
+        {
+            // On save click, assigns the question property of the form the input data
+            this.question = new Problem{
+                ID = question.ID,
+                CourseCode = txtCourseCode.Text, 
+                Topic = txtTopic.Text,
+                Prompt = txtPrompt.Text, 
+                Suggestions = txtSuggestions.Text, 
+                Answer = txtAnswer.Text, 
+                Completed = chkCompleted.Checked };
         }
 
         // returns the question object passed from the previous form with updated data
         public Problem UpdateNewItem(Problem question)
         {
+            this.Text = "Update Question";
             setData(question);
-            saveQuestion();
             this.ShowDialog();
             return this.question;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //if (IsValidData())
+            if (IsValidQuestion() && IsValidData())
             {
-                // Add code here that creates a new item
-                saveQuestion();
+                if(this.Text == "Update Question") {
+                    saveQuestion(question);
+                }
+                else {
+                    // Add code here that creates a new item
+                    saveQuestion();
+                }
+
                 // and closes the form.
                 this.Close();
             }
         }
 
+        private bool IsValidQuestion()
+        {
+            if(txtCourseCode.Text == "All") {
+                MessageBox.Show("Please log out and select a specific course.","Entry Error");
+                return false;
+            }
+            return true;
+        }
+
         private void setData(Problem question)
         {
+            this.question = question;
             txtCourseCode.Text = question.CourseCode;
             txtTopic.Text = question.Topic;
-            rtxPrompt.Text = question.Prompt;
-            rtxSuggetions.Text = question.Suggestions;
-            rtxAnswer.Text = question.Answer;
+            txtPrompt.Text = question.Prompt;
+            txtSuggestions.Text = question.Suggestions;
+            txtAnswer.Text = question.Answer;
             chkCompleted.Checked = question.Completed;
         }
 
-        //private bool IsValidData()
-        //{
-        //    return Validator.IsPresent(txtCourseCode) &&
-        //           Validator.IsInt32(txtCourseCode) &&
-        //           Validator.IsPresent(txtTopic) &&
-        //           Validator.IsPresent(txtPrice) &&
-        //           Validator.IsDecimal(txtPrice);
-        //}
+        private bool IsValidData()
+        {
+            return Validator.IsPresent(txtTopic) &&
+                   Validator.IsPresent(txtPrompt) &&
+                   Validator.IsPresent(txtSuggestions) &&
+                   Validator.IsPresent(txtAnswer);
+        }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {

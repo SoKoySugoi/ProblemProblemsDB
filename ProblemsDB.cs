@@ -33,12 +33,12 @@ namespace LSSEastProblemsDB
                 question.Completed = Convert.ToBoolean(columns[6]);
 
                 questions.Add(question);
-            }                
+            }
             txtFileReader.Close();
             return questions;
         }
 
-        public static void SaveItems(List<Problem> questions)
+        public static void SaveProblems(List<Problem> questions)
         {
             // Add code here to write the List object to the text file
 
