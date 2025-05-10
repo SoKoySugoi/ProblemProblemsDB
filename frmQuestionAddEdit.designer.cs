@@ -195,7 +195,7 @@
             this.MinimizeBox = false;
             this.Name = "frmNewQuestion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Submit New Question";
+            this.Text = "Submit New Questions";
             this.ResumeLayout(false);
             this.PerformLayout();
 

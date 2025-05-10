@@ -12,7 +12,7 @@ namespace LSSEastProblemsDB
         }
 
         // Add a statement here that declares the inventory item.
-        private Question question = null;
+        private Problem question = null;
 
         private void loadSettings(string user, string courseCode)
         {
@@ -42,7 +42,7 @@ namespace LSSEastProblemsDB
         }
 
         // Returns a new question object to the previous form
-        public Question GetNewItem()
+        public Problem GetNewItem()
         {
             this.ShowDialog();
             return question;
@@ -51,12 +51,12 @@ namespace LSSEastProblemsDB
         private void saveQuestion()
         {
             // On save click, assigns the question property of the form the input data
-            question = new Question(txtCourseCode.Text, txtTopic.Text, 
+            question = new Problem(txtCourseCode.Text, txtTopic.Text, 
                 rtxPrompt.Text, rtxSuggetions.Text, rtxAnswer.Text, chkCompleted.Checked);
         }
 
         // returns the question object passed from the previous form with updated data
-        public Question UpdateNewItem(Question question)
+        public Problem UpdateNewItem(Problem question)
         {
             setData(question);
             saveQuestion();
@@ -75,7 +75,7 @@ namespace LSSEastProblemsDB
             }
         }
 
-        private void setData(Question question)
+        private void setData(Problem question)
         {
             txtCourseCode.Text = question.CourseCode;
             txtTopic.Text = question.Topic;

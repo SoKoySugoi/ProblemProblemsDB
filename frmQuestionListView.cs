@@ -15,7 +15,7 @@ namespace LSSEastProblemsDB
         }
 
 		// Add a statement here that declares the list of items.
-		private List <Question> questions = null;
+		private List <Problem> questions = null;
 
         private void frmListQuestions_Load(object sender, EventArgs e)
 		{
@@ -24,7 +24,7 @@ namespace LSSEastProblemsDB
                 btnUpdate.Visible = false;
 				btnDelete.Visible = false;	
             }
-            questions = QuestionsDB.GetItems();
+            questions = ProblemsDB.GetItems();
 			FillItemListBox();			
 		}
 
@@ -32,12 +32,12 @@ namespace LSSEastProblemsDB
 		{
 			lstQuestions.Items.Clear();
 			// Add code here that loads the list box with the items in the list.
-			foreach (Question question in questions) {
-				lstQuestions.Items.Add(question.GetDisplayText());				
+			foreach (Problem question in questions) {
+				lstQuestions.Items.Add(question.GetDisplayText());
 			}
         }
 
-		private Question getSelectedQuestion()
+		private Problem getSelectedQuestion()
 		{
             int selected = lstQuestions.SelectedIndex;
             if (selected != -1) {
@@ -54,14 +54,14 @@ namespace LSSEastProblemsDB
             // Add code here that creates an instance of the New Item form
 			frmNewQuestion NewItemForm = new frmNewQuestion(user, courseCode);
 			this.Hide();
-			Question question = NewItemForm.GetNewItem();
+			Problem question = NewItemForm.GetNewItem();
 			this.Show();
 
             // and then gets a new item from that form.
 			if (question != null)
 			{
                 questions.Add(question);
-				QuestionsDB.SaveItems(questions);
+				ProblemsDB.SaveItems(questions);
 				FillItemListBox();
 			}
         }
@@ -73,7 +73,7 @@ namespace LSSEastProblemsDB
 			// saves the list of products, and refreshes the list box
 			// if the deletion is confirmed.
 
-			Question item = getSelectedQuestion();
+			Problem item = getSelectedQuestion();
             string message = "Are you sure you want to delete this question?";
 			if (item != null)
 			{
@@ -84,7 +84,7 @@ namespace LSSEastProblemsDB
                 if (button == DialogResult.Yes)
                 {
                     questions.Remove(item);
-                    QuestionsDB.SaveItems(questions);
+                    ProblemsDB.SaveItems(questions);
                     FillItemListBox();
                 }
             }
@@ -92,7 +92,7 @@ namespace LSSEastProblemsDB
 		
         private void lstItems_DoubleClick(object sender, EventArgs e)
         {
-			Question selectedQuestion = getSelectedQuestion();
+			Problem selectedQuestion = getSelectedQuestion();
             MessageBox.Show($"Prompt: {selectedQuestion.Prompt}\n\n" +
 				$"Suggestions: {selectedQuestion.Suggestions}\n\n" +
 				$"Answer: {selectedQuestion.Answer}", "Details");
@@ -103,12 +103,12 @@ namespace LSSEastProblemsDB
             int selected = lstQuestions.SelectedIndex;
 			if (selected != -1)
 			{
-                Question selectedQuestion = questions[selected];
+                Problem selectedQuestion = questions[selected];
                 frmNewQuestion updateForm = new frmNewQuestion(user, selectedQuestion.CourseCode);
                 this.Hide();
                 selectedQuestion = updateForm.UpdateNewItem(selectedQuestion);
                 questions[selected] = selectedQuestion;
-                QuestionsDB.SaveItems(questions);
+                ProblemsDB.SaveItems(questions);
                 FillItemListBox();
                 this.Show();
             }

@@ -1,1 +1,2 @@
 842223630|MATH 92|Algebra(PEMDAS)|3(x-2)+5=14|To solve for x, begin by distributing the 3. Then, combine like terms and isolate x to one side of the expression. 3x-6+5=14 -> 3x-1=14 -> 3x=15|x=5|True
+-898730844|MATH 101|Arithmatic|2+2=x|Letters are used in algebra to denote an unknown number. If it makes it easier to understand, try replacing the "x" with a "?" for practice.|2+2=4|True

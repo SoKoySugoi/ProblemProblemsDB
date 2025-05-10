@@ -3,7 +3,7 @@
 namespace LSSEastProblemsDB
 {
     // Created a class object to contain data related to a prompt or question
-    public class Question
+    public class Problem
     {
         // This code is designed to contain data related to a prompt or question
         private int id;
@@ -14,9 +14,9 @@ namespace LSSEastProblemsDB
         private string answer;
         private bool completed;
 
-        public Question() {}
+        public Problem() {}
 
-        public Question(
+        public Problem(
             string courseCode, string topic, string prompt, 
             string suggestions, string answer, bool completed) {
                 // "G"enerate a "u"nique "ID" for the question

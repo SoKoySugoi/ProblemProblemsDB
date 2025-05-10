@@ -4,16 +4,16 @@ using System.IO;
 
 namespace LSSEastProblemsDB
 {
-    public static class QuestionsDB
+    public static class ProblemsDB
     {
         // This code is meant to populate and update a text file to store data from the list of questions.
         private const string dir = @"..\..\Text_Files\";
         private const string path = dir + "Problems.txt";
 
-        public static List<Question> GetItems()
+        public static List<Problem> GetItems()
         {
             // create the list
-            List<Question> questions = new List<Question>();
+            List<Problem> questions = new List<Problem>();
 
             // Add code here to read the text file into the List object.
             StreamReader txtFileReader = new StreamReader(new FileStream(path, FileMode.OpenOrCreate, FileAccess.Read));
@@ -23,7 +23,7 @@ namespace LSSEastProblemsDB
                 string line = txtFileReader.ReadLine();
                 string[] columns = line.Split('|');
 
-                Question question = new Question();
+                Problem question = new Problem();
                 question.ID = Convert.ToInt32(columns[0]);
                 question.CourseCode = columns[1];
                 question.Topic = (columns[2]);
@@ -38,13 +38,13 @@ namespace LSSEastProblemsDB
             return questions;
         }
 
-        public static void SaveItems(List<Question> questions)
+        public static void SaveItems(List<Problem> questions)
         {
             // Add code here to write the List object to the text file
 
             StreamWriter txtFileWriter = new StreamWriter(new FileStream(path, FileMode.Create, FileAccess.Write));
 
-            foreach (Question question in questions)
+            foreach (Problem question in questions)
             {
                 txtFileWriter.Write(question.ID + "|");
                 txtFileWriter.Write(question.CourseCode + "|");
