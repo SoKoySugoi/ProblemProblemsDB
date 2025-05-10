@@ -91,7 +91,7 @@ namespace LSSEastProblemsDB
 
         private bool IsValidQuestion()
         {
-            if(txtCourseCode.Text == "All") {
+            if(txtCourseCode.Text == "All" || subject == "All") {
                 MessageBox.Show("Please log out and select a specific course.","Entry Error");
                 return false;
             }
