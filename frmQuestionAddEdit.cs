@@ -24,7 +24,8 @@ namespace LSSEastProblemsDB
 
             if (user == "Student")
             {
-                // in student mode completed is assumed false and the suggestions label is changed to comments
+                // in student mode completed is assumed false
+                // and the suggestions label is changed to comments
                 chkCompleted.Visible = false;
                 chkCompleted.Checked = false;
                 lblSuggestions.Text = "Comments:";
@@ -78,10 +79,16 @@ namespace LSSEastProblemsDB
             {
                 if(this.Text == "Update Question") {
                     saveQuestion(question);
+                    MessageBox.Show(
+                        "This question has been updated!", 
+                        "Update Successful");
                 }
                 else {
                     // Add code here that creates a new item
                     saveQuestion();
+                    MessageBox.Show(
+                        "Your question has been successfully submitted for review!",
+                        "Question Added");
                 }
 
                 // and closes the form.
@@ -92,7 +99,9 @@ namespace LSSEastProblemsDB
         private bool IsValidQuestion()
         {
             if(txtCourseCode.Text == "All" || subject == "All") {
-                MessageBox.Show("Please log out and select a specific course.","Entry Error");
+                MessageBox.Show(
+                    "Please log out and select a specific course.",
+                    "Entry Error");
                 return false;
             }
             return true;

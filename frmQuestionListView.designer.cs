@@ -37,6 +37,7 @@ namespace LSSEastProblemsDB
             this.lvProblems = new System.Windows.Forms.ListView();
             this.Topic = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Answer = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chkCompleted = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnExit
@@ -128,12 +129,24 @@ namespace LSSEastProblemsDB
             this.Answer.Text = "Answer";
             this.Answer.Width = 150;
             // 
+            // chkCompleted
+            // 
+            this.chkCompleted.AutoSize = true;
+            this.chkCompleted.Location = new System.Drawing.Point(391, 81);
+            this.chkCompleted.Name = "chkCompleted";
+            this.chkCompleted.Size = new System.Drawing.Size(83, 21);
+            this.chkCompleted.TabIndex = 15;
+            this.chkCompleted.Text = "Pending";
+            this.chkCompleted.UseVisualStyleBackColor = true;
+            this.chkCompleted.CheckedChanged += new System.EventHandler(this.chkCompleted_CheckedChanged);
+            // 
             // frmListQuestions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnExit;
             this.ClientSize = new System.Drawing.Size(510, 575);
+            this.Controls.Add(this.chkCompleted);
             this.Controls.Add(this.lvProblems);
             this.Controls.Add(this.lblTopic);
             this.Controls.Add(this.llLogout);
@@ -163,6 +176,7 @@ namespace LSSEastProblemsDB
         private System.Windows.Forms.ListView lvProblems;
         private System.Windows.Forms.ColumnHeader Topic;
         private System.Windows.Forms.ColumnHeader Answer;
+        private System.Windows.Forms.CheckBox chkCompleted;
     }
 }
 

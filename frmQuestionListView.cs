@@ -21,11 +21,11 @@ namespace LSSEastProblemsDB
 
         private void frmListQuestions_Load(object sender, EventArgs e)
 		{
-
 			// Add a statement here that gets the list of items.
 			if (user != "Tutor") {
                 btnUpdate.Visible = false;
-				btnDelete.Visible = false;	
+				btnDelete.Visible = false;
+                chkCompleted.Visible = false;
             }
             lvProblems.Items.Clear();
 
@@ -53,15 +53,48 @@ namespace LSSEastProblemsDB
                 index++;
             }
         }
+        private void FillListView(List<Problem> filteredList)
+        {
+            lvProblems.Items.Clear();
+            // Add code here that loads the list box with the items in the list.
+            int index = 0;
+            foreach (Problem question in filteredList)
+            {
+                lvProblems.Items.Add(question.Topic);
+                lvProblems.Items[index].SubItems.Add(question.Answer);
+                lvProblems.Items[index].Tag = question;
+                index++;
+            }
+        }
 
         private IEnumerable<Problem> FilterList()
         {
             IEnumerable<Problem> list = null;
-            if (courseCode != "All"){
-                list = masterList.FindAll(q => q.CourseCode == courseCode);
+
+            if (user != "Tutor") {
+                if (courseCode != "All")
+                {
+                    list = masterList.FindAll(q => q.CourseCode == courseCode && q.Completed == true);
+                }
+                else if (subject != "All") {
+                    list = masterList.FindAll(q => q.Subject == subject && q.Completed == true);
+                }
+                else {
+                    list = masterList.FindAll(q => q.Completed == true);
+                }
             }
-            else{
-                list = masterList.FindAll(q => q.Subject == subject);
+            else
+            {
+                if (courseCode != "All")
+                {
+                    list = masterList.FindAll(q => q.CourseCode == courseCode);
+                }
+                else if (subject != "All") {
+                    list = masterList.FindAll(q => q.Subject == subject);
+                }
+                else {
+                    list = masterList;
+                }
             }
             return list;
         }
@@ -164,6 +197,26 @@ namespace LSSEastProblemsDB
             MessageBox.Show($"Prompt: {selectedQuestion.Prompt}\n\n" +
                 $"Suggestions: {selectedQuestion.Suggestions}\n\n" +
                 $"Answer: {selectedQuestion.Answer}", "Details");
+        }
+
+        private void chkCompleted_CheckedChanged(object sender, EventArgs e)
+        {
+            ToggleCompleted(chkCompleted.Checked);
+        }
+
+        private void ToggleCompleted(bool @checked)
+        {
+            IEnumerable<Problem> list = null;
+            if (courseCode != "All") {
+                list = masterList.FindAll(q => q.CourseCode == courseCode && q.Completed != @checked);
+            }
+            else if (subject != "All") {
+                list = masterList.FindAll(q => q.Subject == subject && q.Completed != @checked);
+            }
+            else {
+                list = masterList.FindAll(q => q.Completed != @checked);
+            }
+            FillListView(list as List<Problem>);
         }
     }
 }
