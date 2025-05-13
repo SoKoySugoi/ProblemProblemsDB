@@ -44,23 +44,12 @@ namespace LSSEastProblemsDB
 		{
             List<Problem> filteredList = (List<Problem>)FilterList();
             lvProblems.Items.Clear();
-			// Add code here that loads the list box with the items in the list.
             int index = 0;
+
+            // Add code here that loads the list box with the questions in the list
+            // and assigns the tag property of each item to the object.
             foreach (Problem question in filteredList) {
 				lvProblems.Items.Add(question.Topic);
-                lvProblems.Items[index].SubItems.Add(question.Answer);
-                lvProblems.Items[index].Tag = question;
-                index++;
-            }
-        }
-        private void FillListView(List<Problem> filteredList)
-        {
-            lvProblems.Items.Clear();
-            // Add code here that loads the list box with the items in the list.
-            int index = 0;
-            foreach (Problem question in filteredList)
-            {
-                lvProblems.Items.Add(question.Topic);
                 lvProblems.Items[index].SubItems.Add(question.Answer);
                 lvProblems.Items[index].Tag = question;
                 index++;
@@ -72,25 +61,30 @@ namespace LSSEastProblemsDB
             IEnumerable<Problem> list = null;
 
             if (user != "Tutor") {
-                if (courseCode != "All")
-                {
-                    list = masterList.FindAll(q => q.CourseCode == courseCode && q.Completed == true);
+                if (courseCode != "All") {
+                    list = masterList.FindAll(
+                        q => q.CourseCode == courseCode && 
+                        q.Completed == true);
                 }
                 else if (subject != "All") {
-                    list = masterList.FindAll(q => q.Subject == subject && q.Completed == true);
+                    list = masterList.FindAll(
+                        q => q.Subject == subject && 
+                        q.Completed == true);
                 }
                 else {
-                    list = masterList.FindAll(q => q.Completed == true);
+                    list = masterList.FindAll(
+                        q => q.Completed == true);
                 }
             }
             else
             {
-                if (courseCode != "All")
-                {
-                    list = masterList.FindAll(q => q.CourseCode == courseCode);
+                if (courseCode != "All") {
+                    list = masterList.FindAll(
+                        q => q.CourseCode == courseCode);
                 }
                 else if (subject != "All") {
-                    list = masterList.FindAll(q => q.Subject == subject);
+                    list = masterList.FindAll(
+                        q => q.Subject == subject);
                 }
                 else {
                     list = masterList;
@@ -104,12 +98,12 @@ namespace LSSEastProblemsDB
             // Add code here that creates an instance of the New Item form
 			frmNewQuestion NewItemForm = new frmNewQuestion(user, courseCode, subject);
 			this.Hide();
+
 			Problem question = NewItemForm.GetNewItem();
 			this.Show();
 
             // and then gets a new item from that form.
-			if (question != null)
-			{
+			if (question != null) {
                 masterList.Add(question);
 				ProblemsDB.SaveProblems(masterList);
                 FillListView();
@@ -125,14 +119,12 @@ namespace LSSEastProblemsDB
 
             Problem question = (Problem)lvProblems.FocusedItem.Tag;
             string message = "Are you sure you want to delete this question?";
-            if (question != null)
-            {
+            if (question != null) {
                 DialogResult button =
                     MessageBox.Show(message, "Confirm Delete",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (button == DialogResult.Yes)
-                {
+                if (button == DialogResult.Yes) {
                     masterList.Remove(question);
                     ProblemsDB.SaveProblems(masterList);
                     FillListView();
@@ -143,8 +135,7 @@ namespace LSSEastProblemsDB
         private int GetSelectedIndex()
         {
             int selected = -1;
-            if (lvProblems.SelectedItems.Count > 0)
-            {
+            if (lvProblems.SelectedItems.Count > 0) {
                 selected = lvProblems.SelectedIndices[0];
             }
             return selected;
@@ -153,19 +144,21 @@ namespace LSSEastProblemsDB
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             int selected = GetSelectedIndex();
-            if (selected != -1)
-            {
+            if (selected != -1) {
                 Problem selectedQuestion = (Problem)lvProblems.FocusedItem.Tag;
-                frmNewQuestion updateForm = new frmNewQuestion(user, selectedQuestion.CourseCode, selectedQuestion.Subject);
+                frmNewQuestion updateForm = new frmNewQuestion(
+                    user, selectedQuestion.CourseCode, selectedQuestion.Subject);
+
                 this.Hide();
                 selectedQuestion = updateForm.UpdateNewItem(selectedQuestion);
                 UpdateQuestion(selectedQuestion);
+
                 ProblemsDB.SaveProblems(masterList);
                 FillListView();
+
                 this.Show();
             }
-            else
-            {
+            else {
                 MessageBox.Show("Please select a question.");
             }
         }
@@ -174,6 +167,7 @@ namespace LSSEastProblemsDB
         {
             int selectedId = selectedQuestion.ID;
             Problem question = masterList.Find(q => q.ID == selectedId);
+
             masterList.Remove(question);
             masterList.Add(selectedQuestion);
         }
@@ -200,23 +194,41 @@ namespace LSSEastProblemsDB
         }
 
         private void chkCompleted_CheckedChanged(object sender, EventArgs e)
-        {
-            ToggleCompleted(chkCompleted.Checked);
-        }
+        { ToggleCompleted(chkCompleted.Checked); }
 
         private void ToggleCompleted(bool @checked)
         {
             IEnumerable<Problem> list = null;
             if (courseCode != "All") {
-                list = masterList.FindAll(q => q.CourseCode == courseCode && q.Completed != @checked);
+                list = masterList.FindAll(
+                    q => q.CourseCode == courseCode && 
+                    q.Completed != @checked);
             }
             else if (subject != "All") {
-                list = masterList.FindAll(q => q.Subject == subject && q.Completed != @checked);
+                list = masterList.FindAll(
+                    q => q.Subject == subject && 
+                    q.Completed != @checked);
             }
             else {
-                list = masterList.FindAll(q => q.Completed != @checked);
+                list = masterList.FindAll(
+                    q => q.Completed != @checked);
             }
             FillListView(list as List<Problem>);
+        }
+
+        // Overload the FillListView Method to handle a completion check/toggle behavior.
+        private void FillListView(List<Problem> filteredList)
+        {
+            lvProblems.Items.Clear();
+            // Add code here that loads the list box with the items in the list.
+            int index = 0;
+            foreach (Problem question in filteredList)
+            {
+                lvProblems.Items.Add(question.Topic);
+                lvProblems.Items[index].SubItems.Add(question.Answer);
+                lvProblems.Items[index].Tag = question;
+                index++;
+            }
         }
     }
 }
