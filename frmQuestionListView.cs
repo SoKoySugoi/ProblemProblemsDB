@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Windows.Forms;
 
 namespace LSSEastProblemsDB
@@ -9,6 +10,8 @@ namespace LSSEastProblemsDB
 		private string user = "";
         private string courseCode = "";
         private string subject = "";
+        private int counter = 0;
+
         public frmListQuestions(string user, string courseCode, string subject) {
 			InitializeComponent();
 			this.user = user;
@@ -228,6 +231,17 @@ namespace LSSEastProblemsDB
                 lvProblems.Items[index].SubItems.Add(question.Answer);
                 lvProblems.Items[index].Tag = question;
                 index++;
+            }
+        }
+
+        private void lblTopic_Click(object sender, EventArgs e)
+        {
+            if(user != "Student") {
+                counter++;
+            }
+            if (counter == 7) {
+                MessageBox.Show("Admin Tools stand in", "Admin Tools");
+                counter = 0;
             }
         }
     }

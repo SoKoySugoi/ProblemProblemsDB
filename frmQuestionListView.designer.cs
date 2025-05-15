@@ -100,6 +100,7 @@ namespace LSSEastProblemsDB
             this.lblTopic.Size = new System.Drawing.Size(464, 17);
             this.lblTopic.TabIndex = 13;
             this.lblTopic.Text = "Double-Click a topic to view a related question or prompt";
+            this.lblTopic.Click += new System.EventHandler(this.lblTopic_Click);
             // 
             // lvProblems
             // 
@@ -113,7 +114,7 @@ namespace LSSEastProblemsDB
             this.lvProblems.Location = new System.Drawing.Point(13, 46);
             this.lvProblems.MultiSelect = false;
             this.lvProblems.Name = "lvProblems";
-            this.lvProblems.Size = new System.Drawing.Size(338, 500);
+            this.lvProblems.Size = new System.Drawing.Size(307, 500);
             this.lvProblems.TabIndex = 14;
             this.lvProblems.UseCompatibleStateImageBehavior = false;
             this.lvProblems.View = System.Windows.Forms.View.Details;
@@ -132,7 +133,7 @@ namespace LSSEastProblemsDB
             // chkCompleted
             // 
             this.chkCompleted.AutoSize = true;
-            this.chkCompleted.Location = new System.Drawing.Point(391, 81);
+            this.chkCompleted.Location = new System.Drawing.Point(358, 75);
             this.chkCompleted.Name = "chkCompleted";
             this.chkCompleted.Size = new System.Drawing.Size(83, 21);
             this.chkCompleted.TabIndex = 15;

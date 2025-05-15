@@ -14,12 +14,13 @@ namespace LSSEastProblemsDB
 
         private void frmFilterTopics_Load(object sender, EventArgs e)
         {
-            string[]subjects = new Filter().Subjects;
+            string[]subjects = Filter.Subjects;
             foreach (string subject in subjects) {
                 cboSubject.Items.Add(subject);
             }
-            cboSubject.SelectedIndex = 0;
+
             cboCourseNo.Items.Add("All");
+            cboSubject.SelectedIndex = 0;
             cboCourseNo.Enabled = false;
             cboCourseNo.SelectedIndex = 0;
         }
@@ -31,6 +32,11 @@ namespace LSSEastProblemsDB
             if(cboCourseNo.Items.Count != 0) {
                 cboCourseNo.SelectedIndex = 0;
             }
+            if(cboSubject.Text == "All")
+            {
+                cboCourseNo.SelectedIndex = 0;
+                cboCourseNo.Enabled = false;
+            }
         }
 
         private void getCourseNumbers(string subject)
@@ -39,35 +45,42 @@ namespace LSSEastProblemsDB
             {
                 case "Math":
                     cboCourseNo.Items.Clear();
-                    string[] mathCourseCodes = new Filter().MathCourseCodes;
+                    string[] mathCourseCodes = Filter.MathCourseCodes;
                     foreach (string course in mathCourseCodes) {
                         cboCourseNo.Items.Add(course);
                     }
                     break;
                 case "Biology":
                     cboCourseNo.Items.Clear();
-                    string[] bioCourseCodes = new Filter().BioCourseCodes;
+                    string[] bioCourseCodes = Filter.BioCourseCodes;
                     foreach (string course in bioCourseCodes) {
                         cboCourseNo.Items.Add(course);
                     }
                     break;
                 case "Chemistry":
                     cboCourseNo.Items.Clear();
-                    string[] chemCourseCodes = new Filter().ChemCourseCodes;
+                    string[] chemCourseCodes = Filter.ChemCourseCodes;
                     foreach (string course in chemCourseCodes) {
                         cboCourseNo.Items.Add(course);
                     }
                     break;
                 case "Physics":
                     cboCourseNo.Items.Clear();
-                    string[] physicsCourseCodes = new Filter().PhysicsCourseCodes;
+                    string[] physicsCourseCodes = Filter.PhysicsCourseCodes;
                     foreach (string course in physicsCourseCodes) {
+                        cboCourseNo.Items.Add(course);
+                    }
+                    break;
+                case "Computer Information Systems":
+                    cboCourseNo.Items.Clear();
+                    string[] cisCourseCodes = Filter.CompInfoSysCourseCodes;
+                    foreach (string course in cisCourseCodes) {
                         cboCourseNo.Items.Add(course);
                     }
                     break;
                 case "Computer Science":
                     cboCourseNo.Items.Clear();
-                    string[] compSciCourseCodes = new Filter().CompSciCourseCodes;
+                    string[] compSciCourseCodes = Filter.CompSciCourseCodes;
                     foreach (string course in compSciCourseCodes) {
                         cboCourseNo.Items.Add(course);
                     }

@@ -1,2 +1,3 @@
-1337645219|Math|MATH 98|Linear Equation|What is the formula of linear equation?|A y coordinate can be tracked by the rate of the change assigned to the x coordinate, adjusted for an initial position.|y=mx+b|True
 1277872438|Math|MATH 92|Arithmatic|2+2=?|Try counting|4|True
+-1056934763|Math|MATH 92|Vocab|What is an Integer|There are resources readily availible online with this information.|Any whole number (1,2,3...)|True
+1337645219|Math|MATH 98|Linear Equation|What is the formula of linear equation?|A y coordinate can be tracked by the rate of the change assigned to the x coordinate, adjusted for an initial position.|y=mx+b|True
